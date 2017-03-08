@@ -1,0 +1,24 @@
+h1, h2, li, p{
+  color: White;
+}
+
+*{
+  font-family: Georgia;
+}
+
+img{
+  height: 16px;;
+  width: 16px;
+}
+
+footer{
+  color: White;
+  font-size: 12px;
+  
+}
+
+body {
+  background-image: url('http://freephoto.cc/wp-content/uploads/2016/02/laptop-glasses-coffe-preview-850x565.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+}
