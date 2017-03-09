@@ -1,5 +1,7 @@
-h1, h2, li, p{
-  color: White;
+h1, h2, li, p, div{
+  color: whitesmoke;
+  text-align: center;
+  vertical-align: middle;
 }
 
 *{
@@ -7,8 +9,8 @@ h1, h2, li, p{
 }
 
 img{
-  height: 16px;;
-  width: 16px;
+  height: 20px;
+  width: 20px;
 }
 
 footer{
@@ -21,4 +23,9 @@ body {
   background-image: url('http://freephoto.cc/wp-content/uploads/2016/02/laptop-glasses-coffe-preview-850x565.jpg');
   background-repeat: no-repeat;
   background-size:cover;
+}
+
+a {
+
+    text-decoration: none;
 }
