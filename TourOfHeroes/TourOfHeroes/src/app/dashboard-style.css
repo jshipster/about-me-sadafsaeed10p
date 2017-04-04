@@ -1,0 +1,19 @@
+li 
+   { 
+      display: inline-block; 
+      padding: 5px;
+   }
+   .dashboardButton 
+   {
+      height: 100px;
+      width: auto;
+      background-color: grey;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .dashboardHeading {
+      color: grey;
+      margin-left: 193px;
+    }
+    

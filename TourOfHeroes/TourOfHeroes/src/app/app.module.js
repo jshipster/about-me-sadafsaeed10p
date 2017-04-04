@@ -16,7 +16,7 @@ exports.router = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
     { path: 'myheroes', component: heroes_list_component_1.HeroesListComponent },
-    { path: 'hero/:id', component: hero_details_component_1.HeroDetailsComponent }
+    { path: 'hero/:id/:page', component: hero_details_component_1.HeroDetailsComponent }
 ];
 var AppModule = (function () {
     function AppModule() {

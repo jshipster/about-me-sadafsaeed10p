@@ -12,7 +12,7 @@ export const router: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'myheroes', component: HeroesListComponent },
-  { path: 'hero/:id', component: HeroDetailsComponent }
+  { path: 'hero/:id/:page', component: HeroDetailsComponent }
 ];
 
 @NgModule({

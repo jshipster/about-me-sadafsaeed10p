@@ -17,6 +17,7 @@ var HeroDetailsComponent = (function () {
     }
     HeroDetailsComponent.prototype.ngOnInit = function () {
         this.heroId = this.route.snapshot.params['id'];
+        this.previousPage = this.route.snapshot.params['page'];
         var mySelectedHero = Heroes_1.HeroService.getInstance().GetHeroById(this.heroId);
         if (mySelectedHero != null && mySelectedHero != undefined)
             this.heroName = mySelectedHero.name;
@@ -24,16 +25,13 @@ var HeroDetailsComponent = (function () {
     HeroDetailsComponent.prototype.onTextChage = function ($event) {
         Heroes_1.HeroService.getInstance().UpdateHeroNameById(this.heroId, $event.target.value);
     };
-    HeroDetailsComponent.prototype.goBack = function () {
-        window.history.back();
-    };
     return HeroDetailsComponent;
 }());
 HeroDetailsComponent = __decorate([
     core_1.Component({
         selector: 'hero-details',
-        template: "\n    <h2 class=\"heroDetailsHeading\">{{box.value}} details!</h2>\n    <b class=\"labelFields\">Id:</b><label class=\"labelId\"> {{heroId}}</label>\n    <br />\n    <b class=\"labelFields\">Name:</b><input class=\"inputTextBox\" #box (keyup)=\"onTextChage($event)\" value=\"{{heroName}}\">\n    <br />\n    <br />\n    <button class=\"backButton\" (click)=\"goBack()\">Back</button>\n  ",
-        styles: ["\n  .heroDetailsHeading {\n      color: darkslategrey;\n      margin-left: 46px;\n    }\n\n    .labelFields{\n         color: grey;\n         margin-left: 46px;\n    }\n    .inputTextBox{\n        margin-left: 10px;\n        height: 30px;\n        font-size: medium;\n    }\n\n    .labelId{\n        margin-left: 31px;\n        color: grey;\n        font-weight: bold;\n        font-size: large;\n    }\n\n    .backButton{\n        background-color: lightgrey;\n        border-radius: 5px;\n        color: grey;\n        margin-left: 46px;\n        height: 32px;\n        cursor:pointer;\n    }\n    "]
+        templateUrl: './hero-detail-form.html',
+        styleUrls: ['./heroDetail-style.css']
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute])
 ], HeroDetailsComponent);

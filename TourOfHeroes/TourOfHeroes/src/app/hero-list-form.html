@@ -1,0 +1,14 @@
+<div class="container">
+    <h2>My Heroes</h2>
+    <form>
+        <ul>
+            <li *ngFor="let hero of heroes" (click)="GetSelectedHero(hero)">
+                <button class="heroButton2"><span class="idHeroName">{{hero.id}}</span></button>
+                <button class="heroButton"><span class="idHeroName">{{hero.name}}</span></button>
+            </li>
+        </ul>
+        <span [hidden]="!isHeroSelected"><h3>{{selectedHeroName | uppercase}} is my hero </h3></span>
+        <button class="detailsButton" [routerLink]="['/hero', selectedHeroId, 'myheroes']" [hidden]="!isHeroSelected">View Details</button>
+        
+    </form>
+</div>
