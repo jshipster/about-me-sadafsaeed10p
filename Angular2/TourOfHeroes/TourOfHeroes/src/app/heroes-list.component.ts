@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hero, HeroService } from './Heroes';
+import {  HeroService2 } from './hero.service';
 
 @Component({
   selector:'hero-list',
@@ -7,13 +8,15 @@ import { Hero, HeroService } from './Heroes';
   ,styleUrls:['./heroList-style.css']
 })
 
-export class HeroesListComponent{
+export class HeroesListComponent implements OnInit {
 
-    isHeroSelected:boolean =false;
+  constructor(private heroService: HeroService2) { }
+
+    isHeroSelected:boolean = false;
     selectedHeroName:string;
     selectedHeroId: number;
 
-  heroes: Hero[] = this.GetHeroList();
+  heroes: Hero[] = [];
 
   GetSelectedHero(hero: Hero)
   {
@@ -24,8 +27,13 @@ export class HeroesListComponent{
 
   }
 
-  GetHeroList():Hero[]
+ /* GetHeroList():Hero[]
   {
     return HeroService.getInstance().GetAllHeroes(); 
+  }*/
+
+  ngOnInit(): void {
+    this.heroService.getHeroes()
+      .then(heroes => this.heroes = heroes);
   }
 }

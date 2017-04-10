@@ -1,4 +1,4 @@
-<div class="container">
+<!--<div class="container">
     <h2 class="heroDetailsHeading">{{box.value}} details!</h2>
     <form>
         <b class="labelFields">Id:</b><label class="labelId"> {{heroId}}</label>
@@ -8,4 +8,16 @@
         <br />
         <button class="backButton" [routerLink]="['/'+ previousPage]">Back</button>
     </form>
+</div>-->
+
+<div *ngIf="hero">
+  <h2 class="heroDetailsHeading">{{hero.name}} details!</h2>
+  <div>
+    <label class="labelFields">Id: </label>{{hero.id}}</div>
+  <div>
+    <label class="labelFields">Name: </label>
+    <input class="inputTextBox" [(ngModel)]="hero.name" placeholder="name" />
+   </div>
+  <button class="backButton" (click)="goBack()">Back</button>
+  <button class="backButton" (click)="save()">Save</button>
 </div>

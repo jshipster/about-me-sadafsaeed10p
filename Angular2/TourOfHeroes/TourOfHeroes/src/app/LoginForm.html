@@ -1,0 +1,12 @@
+<div class="container">
+    <h2 class="heroDetailsHeading">Login</h2>
+    <form>
+        <b class="labelFields">User Name:</b><input #textUName class="inputTextBox" [(ngModel)] = "txtUserName">
+        <br />
+        <b class="labelFields">Password:</b><input #textPwd class="inputTextBox" [(ngModel)] = "txtUserPwd">
+        <br />
+        <br />
+        <button (click)="AuthenticateUser(textUName.value,textPwd.value)" class="backButton">Login</button>
+        
+    </form>
+</div>

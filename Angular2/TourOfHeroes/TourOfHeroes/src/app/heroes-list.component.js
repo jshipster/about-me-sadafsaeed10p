@@ -5,12 +5,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var core_1 = require("@angular/core");
-var Heroes_1 = require("./Heroes");
+var hero_service_1 = require("./hero.service");
 var HeroesListComponent = (function () {
-    function HeroesListComponent() {
+    function HeroesListComponent(heroService) {
+        this.heroService = heroService;
         this.isHeroSelected = false;
-        this.heroes = this.GetHeroList();
+        this.heroes = [];
     }
     HeroesListComponent.prototype.GetSelectedHero = function (hero) {
         this.isHeroSelected = true;
@@ -18,8 +22,14 @@ var HeroesListComponent = (function () {
         this.selectedHeroName = hero.name;
         return false;
     };
-    HeroesListComponent.prototype.GetHeroList = function () {
-        return Heroes_1.HeroService.getInstance().GetAllHeroes();
+    /* GetHeroList():Hero[]
+     {
+       return HeroService.getInstance().GetAllHeroes();
+     }*/
+    HeroesListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.heroService.getHeroes()
+            .then(function (heroes) { return _this.heroes = heroes; });
     };
     return HeroesListComponent;
 }());
@@ -28,7 +38,8 @@ HeroesListComponent = __decorate([
         selector: 'hero-list',
         templateUrl: './hero-list-form.html',
         styleUrls: ['./heroList-style.css']
-    })
+    }),
+    __metadata("design:paramtypes", [hero_service_1.HeroService2])
 ], HeroesListComponent);
 exports.HeroesListComponent = HeroesListComponent;
 //# sourceMappingURL=heroes-list.component.js.map
