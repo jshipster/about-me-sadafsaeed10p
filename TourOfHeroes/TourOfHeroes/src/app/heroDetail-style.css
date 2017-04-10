@@ -1,0 +1,30 @@
+.heroDetailsHeading {
+      color: darkslategrey;
+      margin-left: 46px;
+    }
+
+    .labelFields{
+         color: grey;
+         margin-left: 46px;
+    }
+    .inputTextBox{
+        margin-left: 10px;
+        height: 30px;
+        font-size: medium;
+    }
+
+    .labelId{
+        margin-left: 31px;
+        color: grey;
+        font-weight: bold;
+        font-size: large;
+    }
+
+    .backButton{
+        background-color: lightgrey;
+        border-radius: 5px;
+        color: grey;
+        margin-left: 46px;
+        height: 32px;
+        cursor:pointer;
+    }

@@ -1,0 +1,10 @@
+<div class="container">
+    <h2 class="dashboardHeading">Top Heroes</h2>
+    <form>
+        <ul>
+            <li *ngFor="let hero of topHero">
+                <button class="dashboardButton" [routerLink]="['/hero', hero.id, 'dashboard' ]">{{hero.name}}</button>
+            </li>
+        </ul>
+    </form>
+</div>

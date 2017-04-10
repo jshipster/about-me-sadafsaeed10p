@@ -1,0 +1,11 @@
+<div class="container">
+    <h2 class="heroDetailsHeading">{{box.value}} details!</h2>
+    <form>
+        <b class="labelFields">Id:</b><label class="labelId"> {{heroId}}</label>
+        <br />
+        <b class="labelFields">Name:</b><input class="inputTextBox" #box (keyup)="onTextChage($event)" value="{{heroName}}">
+        <br />
+        <br />
+        <button class="backButton" [routerLink]="['/'+ previousPage]">Back</button>
+    </form>
+</div>
