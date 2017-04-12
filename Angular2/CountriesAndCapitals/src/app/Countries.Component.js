@@ -20,6 +20,7 @@ var CountriesComponent = (function () {
     }
     CountriesComponent.prototype.ngOnInit = function () {
         try {
+            this.isLoading = true;
             this.getCountries();
         }
         catch (error) {
@@ -29,7 +30,7 @@ var CountriesComponent = (function () {
     CountriesComponent.prototype.getCountries = function () {
         var _this = this;
         this.countryService.getCountryList()
-            .subscribe(function (countries) { _this.countryList = _this.originalCountryList = countries; });
+            .subscribe(function (countries) { _this.isLoading = false; _this.countryList = _this.originalCountryList = countries; });
     };
     CountriesComponent.prototype.onSelect = function (country) {
         this.router.navigate(['/countries', country.countryCode]);

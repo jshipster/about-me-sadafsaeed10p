@@ -7,8 +7,8 @@ import { Country, GeoName } from './Entities/Country';
     selector: 'country-Detail',
     templateUrl: './Views/CountryDetailView.html',
     styleUrls: ['./CustomStyles/countryDetails.css']
-    //,providers: [CountryService]
 })
+
 export class CountryDetailComponent implements OnInit {
  
     constructor(private router: ActivatedRoute, private route: Router, private countryService: CountryService) { }
@@ -16,9 +16,12 @@ export class CountryDetailComponent implements OnInit {
     country:Country;
     capitals: GeoName[] = [];
     neighbours: GeoName[] = [];
+    isLoading: boolean; 
+    isNeighboursExist:boolean = true;
 
     ngOnInit(): void 
     {
+        this.isLoading = true;
         this.loadCountryDetail(this.router.snapshot.params['countryCode']);
     }
 
@@ -31,6 +34,7 @@ export class CountryDetailComponent implements OnInit {
           this.countryService.getCapitalPopultion(countryCode).toPromise()
           .then(cap => 
           {
+            //Get the Capital population
             this.capitals = cap;
             let filterCapital:GeoName[] = this.capitals.filter(capital => capital.fcodeName.toLowerCase() == "capital of a political entity");
             this.country.capitalPopulation = filterCapital.length > 0 ? filterCapital[0].population : 0;
@@ -38,7 +42,11 @@ export class CountryDetailComponent implements OnInit {
             this.countryService.getNeighbouringCountries(this.country.geonameId).toPromise()
             .then(neighbors => 
             {
-              this.neighbours = neighbors.slice(0,3);
+                this.isLoading = false;
+                if(neighbors.length > 0)
+                  this.neighbours = neighbors.slice(0,3); //Pick top 3 neughbours
+                else
+                  this.isNeighboursExist = false;
             })
           })
        }); 
@@ -47,6 +55,7 @@ export class CountryDetailComponent implements OnInit {
     navigate(countryCode:string):void
     {
       this.route.navigate(['/countries',countryCode]);
+      this.isLoading = true;
       this.loadCountryDetail(countryCode);
     }
 }

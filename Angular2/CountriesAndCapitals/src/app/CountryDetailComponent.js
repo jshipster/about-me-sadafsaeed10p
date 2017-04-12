@@ -18,8 +18,10 @@ var CountryDetailComponent = (function () {
         this.countryService = countryService;
         this.capitals = [];
         this.neighbours = [];
+        this.isNeighboursExist = true;
     }
     CountryDetailComponent.prototype.ngOnInit = function () {
+        this.isLoading = true;
         this.loadCountryDetail(this.router.snapshot.params['countryCode']);
     };
     CountryDetailComponent.prototype.loadCountryDetail = function (countryCode) {
@@ -29,18 +31,24 @@ var CountryDetailComponent = (function () {
             _this.country = c[0];
             _this.countryService.getCapitalPopultion(countryCode).toPromise()
                 .then(function (cap) {
+                //Get the Capital population
                 _this.capitals = cap;
                 var filterCapital = _this.capitals.filter(function (capital) { return capital.fcodeName.toLowerCase() == "capital of a political entity"; });
                 _this.country.capitalPopulation = filterCapital.length > 0 ? filterCapital[0].population : 0;
                 _this.countryService.getNeighbouringCountries(_this.country.geonameId).toPromise()
                     .then(function (neighbors) {
-                    _this.neighbours = neighbors.slice(0, 3);
+                    _this.isLoading = false;
+                    if (neighbors.length > 0)
+                        _this.neighbours = neighbors.slice(0, 3); //Pick top 3 neughbours
+                    else
+                        _this.isNeighboursExist = false;
                 });
             });
         });
     };
     CountryDetailComponent.prototype.navigate = function (countryCode) {
         this.route.navigate(['/countries', countryCode]);
+        this.isLoading = true;
         this.loadCountryDetail(countryCode);
     };
     return CountryDetailComponent;

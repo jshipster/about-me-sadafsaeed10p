@@ -7,8 +7,6 @@ import { Country } from './Entities/Country';
     selector: 'country-list',
     templateUrl: './Views/CountriesView.html',
     styleUrls :['./CustomStyles/countries.css']
-    //styleUrls: ['./CustomStyles/loginForm.css']
-   // ,providers: [CountryService]
 })
 export class CountriesComponent implements OnInit {
  
@@ -16,11 +14,13 @@ export class CountriesComponent implements OnInit {
     countryList: Country[] = [];
     originalCountryList: Country[] = [];
     searchTerm:string;
+    isLoading: boolean; 
 
     ngOnInit(): void 
     {
         try
         {
+           this.isLoading = true;
            this.getCountries();
         }
         catch(error){
@@ -30,7 +30,7 @@ export class CountriesComponent implements OnInit {
 
   getCountries():void{
       this.countryService.getCountryList()
-      .subscribe(countries => {this.countryList = this.originalCountryList = countries});  
+      .subscribe(countries => {this.isLoading = false; this.countryList = this.originalCountryList = countries});  
   }
 
   onSelect(country: Country) {

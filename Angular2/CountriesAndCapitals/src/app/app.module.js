@@ -10,7 +10,6 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
-//import { InMemoryDataService }  from './in-memory-data.service';
 var app_component_1 = require("./app.component");
 var Home_Component_1 = require("./Home.Component");
 var Countries_Component_1 = require("./Countries.Component");
