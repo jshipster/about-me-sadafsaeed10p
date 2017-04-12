@@ -15,8 +15,3 @@ a{
   color: deepskyblue;
   font-family: Arial, Helvetica, sans-serif;
 }
-
-router-outlet + .loading .spinner {
-      opacity: 1;
-      z-index: 100;
-  } 
