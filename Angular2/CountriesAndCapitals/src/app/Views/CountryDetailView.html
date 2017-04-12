@@ -17,7 +17,7 @@
         </tr>
         <tr>
             <td>
-                <label class="labelText">Neighbouring Countries: </label><br />
+                <label class="labelText">Neighbouring Countries: </label><br /><label class="lblDetails" *ngIf="isNeighboursExist == false">No neighbour found!!!</label>
                 <ul>
                     <li *ngFor="let nCountry of neighbours">
                         <a (click) = "navigate(nCountry.countryCode)" [routerLink]="['/countries', nCountry.countryCode]">{{nCountry.name}}</a>
@@ -31,3 +31,4 @@
     <a class="backHomeLink" [routerLink]="['/countries']">Back</a>
     <a class="backHomeLink" [routerLink]="['/']">Home</a>
 </div>
+<div *ngIf="isLoading == true" class="loader">Loading..</div>
